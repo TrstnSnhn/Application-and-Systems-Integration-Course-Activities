@@ -1,0 +1,10 @@
+{
+  "name": "apsi-activity-1-hello-world",
+  "version": "1.0.0",
+  "description": "APSI Activity 1 Hello World assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}
