@@ -10,12 +10,29 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
 
       - name: Run tests
         run: npm test
+
+      - name: Write Activity 1 test summary
+        if: ${{ success() }}
+        shell: bash
+        run: |
+          {
+            echo "## 6 / 6 tests passed"
+            echo ""
+            echo "| # | Test | Status |"
+            echo "| - | - | - |"
+            echo "| 1 | Activity 1 Hello World prints \"Hello, World!\" to the console | Passed |"
+            echo "| 2 | Student info student.json fullName is filled in | Passed |"
+            echo "| 3 | Student info student.json studentNumber is filled in | Passed |"
+            echo "| 4 | Student info student.json studentEmail is filled in | Passed |"
+            echo "| 5 | Student info student.json personalEmail is filled in | Passed |"
+            echo "| 6 | Student info student.json githubAccount is filled in | Passed |"
+          } >> "$GITHUB_STEP_SUMMARY"
